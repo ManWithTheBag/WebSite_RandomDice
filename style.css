@@ -1,0 +1,59 @@
+body{
+  background-color: #393E46;
+  text-align: center;
+  color: #6ECCAF;
+}
+
+h1{
+  font-family: 'Nerko One', cursive;
+  font-size: 12vw;
+  text-shadow: black 0.15rem 0.15rem;
+  padding-top: 1%;
+  margin: 0;
+}
+
+h3{
+  font-family: 'Courgette', cursive;
+  font-size: 3vw;
+  font-weight: 200;
+  text-shadow: black 0.1rem 0.1rem;
+  margin: 0 1vw 0 0;
+}
+
+/* Count dices section */
+._count-font{
+  color: #D6E4E5;
+  text-align: center;
+  display: inline-block;
+  font-size: 8vw;
+  vertical-align: middle;
+}
+._count-plus, ._count-minus{
+  margin: 0 2vw 0 2vw;
+  color: #D6E4E5;
+}
+
+._count-plus:hover, ._count-minus:hover{
+  color: white;
+}
+
+._count-input{
+  background-color: #393E46;
+  width: 5%;
+  border: 0;
+}
+._count-input:focus{
+  outline: none;
+}
+
+._count-button{
+  color: #ADE792;
+  background-color: #393E46;
+  border: 0;
+  vertical-align: middle;
+  margin-left: 10vw;
+}
+._count-button:hover{
+  transform: rotate(360deg);
+  transition-duration: 1s;
+}
