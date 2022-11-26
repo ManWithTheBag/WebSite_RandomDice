@@ -1,48 +1,37 @@
-
-
-var countPlayers = parseInt($(".js-count-players").text());
+var countPlayers = $(".js-count-players");
+var diceSectionHtml = $("._dice-section");
 var playerArray = [];
 
-function PlayerObj(playerNanmer, diceImg) {
+function PlayerObj(playerNanmer, diceImg, playerHimlDiv) {
   this.playerNamber = playerNanmer;
   this.diceImg = diceImg;
-  this.getRandomDiceImg = function(){
+  this.playerHimlDiv = playerHimlDiv;
+
+  this.removePlayerHtml = function() {
+    if (this.playerHimlDiv != null) {
+      this.playerHimlDiv.remove();
+    }
+  }
+  this.getRandomDiceImg = function() {
     getRundomDicePath();
   }
 }
 
-getNewPlayerArray(countPlayers);
-updatePlayers();
+getNewPlayerArray(parseInt(countPlayers.text()));
 
-$(".js-update-button").on("click", function(){
+// Event updating button and animation button
+$(".js-update-button").on("click", function() {
   $(".js-update-button").addClass("js-update-button-animation");
   updatePlayers();
-  setTimeout(function(){
+  setTimeout(function() {
     $(".js-update-button").removeClass("js-update-button-animation");
   }, 200);
 })
 
-
-function updatePlayers(){
+function updatePlayers() {
   for (var i = 0; i < playerArray.length; i++) {
-    playerArray[i].playerNamber.text("Player " + (i + 1));
-    playerArray[i].diceImg.attr("src", getRundomDicePath());
+    playerArray[i].diceImg.src = getRundomDicePath();
   }
-}
-
-
-function getNewPlayerArray(currentCountPlayers) {
-  for (var i = 0; i < currentCountPlayers; i++) {
-    playerArray[i] = new PlayerObj(hetHtmlPlayerNumber(), getHtmImg());
-  }
-}
-
-function getHtmImg(){
-  return $(".js-dice-img");
-}
-
-function hetHtmlPlayerNumber(){
-  return $(".js-player-number");
 }
 
 function getRundomDicePath() {
@@ -50,36 +39,55 @@ function getRundomDicePath() {
   var rundomImgPath = "D:/WebDev_Learning/WebSite_RandomDice/images/dice" + runsomNumber + ".png";
   return rundomImgPath;
 }
+//------
 
-// var setprop = declaration.setProperty("background-color", "yellow");
 
-// modifyStyleShit();
-//
-// function modifyStyleShit(){
-//   const localStyleSheet = document.styleSheets[0];
-//   console.log(localStyleSheet);
-//   let styleSelector;
-//
-//   // for (var i = 0; i < localStyleSheet.cssRules.length; i++) {
-//   //   if(localStyleSheet.cssRules[i].selectorText === "js-update-button-animation"){
-//   //     styleSelector = localStyleSheet.cssRules[i];
-//   //   }
-//   // }
-//   //
-//   // styleSelector.style.setProperty("color", "blue");
-// }
+// Add and subtract 1 players count
+$(".js-count-plus").on("click", function() {
+  countPlayers.text(parseInt(countPlayers.text()) + 1);
+  getNewPlayerArray(parseInt(countPlayers.text()));
+})
+$(".js-count-minus").on("click", function() {
+  if (parseInt(countPlayers.text()) > 1) {
+    countPlayers.text(parseInt(countPlayers.text()) - 1);
+    getNewPlayerArray(parseInt(countPlayers.text()));
+  }
+})
 
-// $(document).ready(function() {
-//   $('.count').prop('disabled', true);
-//
-//   $(document).on('click', '.plus', function() {
-//     $('.count').val(parseInt($('.count').val()) + 1);
-//   });
-//
-//   $(document).on('click', '.minus', function() {
-//     $('.count').val(parseInt($('.count').val()) - 1);
-//     if ($('.count').val() == 0) {
-//       $('.count').val(1);
-//     }
-//   });
-// });
+function getNewPlayerArray(currentcountPlayers) {
+  if (playerArray.length != 0) {
+    for (var i = 0; i < playerArray.length; i++) {
+      playerArray[i].removePlayerHtml();
+    }
+    playerArray = [];
+  }
+
+  for (var i = 0; i < currentcountPlayers; i++) {
+    var curentPlayerHtml = createPlayerHtml();
+    var newPlayer = new PlayerObj(getHtmlPlayerNumber(curentPlayerHtml), getHtmImg(curentPlayerHtml), curentPlayerHtml);
+    newPlayer.playerNamber.textContent = "Player " + (i + 1);
+    playerArray[i] = newPlayer;
+  }
+  updatePlayers();
+}
+
+function createPlayerHtml() {
+  var htmlDiv = $("<div class='js-player'>  <h3 class='js-player-number'>Player 1</h3>   <img class='_dice-image js-dice-img' src='D:/WebDev_Learning/WebSite_RandomDice/images/dice6.png' alt='dice image'>   </div>")
+    .appendTo("._dice-section");
+  return htmlDiv[0];
+  // <div class="js-player">
+  //   <h3 class="js-player-number">Player 1</h3>
+  //   <img class="_dice-image js-dice-img" src="D:/WebDev_Learning/WebSite_RandomDice/images/dice6.png" alt="dice image">
+  // </div>
+}
+
+function getHtmlPlayerNumber(playerHtmlDiv) {
+  return playerHtmlDiv.getElementsByClassName("js-player-number")[0];
+}
+
+function getHtmImg(playerHtmlDiv) {
+  return playerHtmlDiv.getElementsByClassName("js-dice-img")[0];
+}
+//-------
+
+updatePlayers();
