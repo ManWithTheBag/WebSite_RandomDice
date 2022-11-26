@@ -72,10 +72,10 @@ function getNewPlayerArray(currentcountPlayers) {
 }
 
 function createPlayerHtml() {
-  var htmlDiv = $("<div class='js-player'>  <h3 class='js-player-number'>Player 1</h3>   <img class='_dice-image js-dice-img' src='D:/WebDev_Learning/WebSite_RandomDice/images/dice6.png' alt='dice image'>   </div>")
+  var htmlDiv = $("<div class='col-4 _dice-centr js-player'>  <h3 class='js-player-number'>Player 1</h3>   <img class='_dice-image js-dice-img' src='D:/WebDev_Learning/WebSite_RandomDice/images/dice6.png' alt='dice image'>   </div>")
     .appendTo("._dice-section");
   return htmlDiv[0];
-  // <div class="js-player">
+  // <div class="col-lg-4 col-md-6 col-sm-6 _dice-centr js-player">
   //   <h3 class="js-player-number">Player 1</h3>
   //   <img class="_dice-image js-dice-img" src="D:/WebDev_Learning/WebSite_RandomDice/images/dice6.png" alt="dice image">
   // </div>
