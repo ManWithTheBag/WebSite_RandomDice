@@ -6,9 +6,8 @@ body{
 
 h1{
   font-family: 'Nerko One', cursive;
-  font-size: 12vw;
+  font-size: 10vw;
   text-shadow: black 0.15rem 0.15rem;
-  padding-top: 1%;
   margin: 0;
 }
 
@@ -20,12 +19,12 @@ h3{
   margin: 0 1vw 0 0;
 }
 
-/* Count dices section */
+/* Count section */
 ._count-font{
   color: #D6E4E5;
   text-align: center;
   display: inline-block;
-  font-size: 8vw;
+  font-size: 5vw;
   vertical-align: middle;
 }
 ._count-plus, ._count-minus{
@@ -37,23 +36,26 @@ h3{
   color: white;
 }
 
-._count-input{
-  background-color: #393E46;
-  width: 5%;
-  border: 0;
-}
-._count-input:focus{
-  outline: none;
-}
 
-._count-button{
+._update-button{
   color: #ADE792;
   background-color: #393E46;
   border: 0;
   vertical-align: middle;
   margin-left: 10vw;
+  font-size: 4vw;
 }
-._count-button:hover{
+
+.js-update-button-animation{
   transform: rotate(360deg);
-  transition-duration: 1s;
+  transition-duration: 0.2s;
+}
+
+/* Dice section */
+._dice-section{
+  margin-top: 3vw;
+}
+._dice-image{
+  width: 18vw;
+  margin: 2vw;
 }
