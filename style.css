@@ -63,3 +63,19 @@ h3{
 ._dice-centr{
   margin: 0 auto;
 }
+
+/* Footer section */
+._footer-section{
+  background-color: #222831;
+  margin: 0;
+  padding: 2.5vw;
+}
+._footer-font{
+  font-family: 'Courgette', cursive;
+  color: white;
+  font-size: 1vw;
+  font-weight: 200;
+  vertical-align: middle;
+  text-decoration: none;
+
+}
